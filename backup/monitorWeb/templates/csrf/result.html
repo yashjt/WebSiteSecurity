@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>CSRF Scan Result</h1>
+    <p>URL: {{ url }}</p>
+    <p>Vulnerable: {% if is_vulnerable %}Yes{% else %}No{% endif %}</p>
+    <a href="{% url 'csrf_scanner' %}">Scan Another URL</a>
+
+
+</body>
+
+</html>

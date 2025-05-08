@@ -1,0 +1,10 @@
+{% extends "nav.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="display-4">Ping Result</h1>
+    <p>Pinging URL: {{ url }}</p>
+    <pre>{{ result }}</pre>
+    <a href="{% url 'ping_scanner' %}" class="btn btn-primary">Scan Another URL</a>
+</div>
+{% endblock %}

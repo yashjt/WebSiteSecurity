@@ -1,0 +1,76 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SQL Injection Scan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            /* Set background color */
+            padding: 50px;
+            /* Add padding for better spacing */
+        }
+
+        h1 {
+            color: #007bff;
+            /* Set heading color */
+        }
+
+        form {
+            margin-top: 20px;
+            /* Add top margin for form */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            /* Add bottom margin for labels */
+        }
+
+        input[type="url"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            /* Add bottom margin for input */
+            border: 1px solid #ced4da;
+            /* Add a border */
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            /* Set button background color */
+            color: white;
+            /* Set button text color */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+            /* Darken button color on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>SQL Injection Scan</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="url">URL to scan for SQL injection:</label>
+            <input type="url" id="url" name="url" required>
+            <button type="submit">Scan</button>
+        </form>
+    </div>
+</body>
+
+</html>
+
+{% endblock %}

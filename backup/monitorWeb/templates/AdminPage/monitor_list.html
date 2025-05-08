@@ -1,0 +1,117 @@
+{% extends 'AdminPage/AdminNav.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e5e5e5;
+        }
+
+        .no-data {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+        }
+
+        button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Website Monitoring Information</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>URL</th>
+                    <th>Status Code</th>
+                    <th>Response Time (seconds)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for website in websites %}
+                <tr>
+                    <td>{{ website.url }}</td>
+                    <td>{{ website.status_code }}</td>
+                    <td>{{ website.response_time }}</td>
+                    <td>
+                        <form action="{% url 'del_website'  website.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit"
+                                onclick="return confirm('Are you sure you want to delete this scan?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="no-data">No website monitoring information available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+{% endblock %}
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Monitored Websites</title>
+</head>
+
+<body>
+    <h1>Monitored Websites</h1>
+    <ul>
+        {% for website in websites %}
+        <li>
+            {{ website.url }}
+            {% if website.status_code %}
+            <span>Status Code: {{ website.status_code }}</span>
+            <span>Response Time: {{ website.response_time }} seconds</span>
+            {% else %}
+            <span>Status: Error (Unable to connect)</span>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

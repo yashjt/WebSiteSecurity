@@ -1,0 +1,20 @@
+<!-- initiate_scan.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>XSS Scanner - Initiate Scan</title>
+</head>
+
+<body>
+    <h1>XSS Scanner - Initiate Scan</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="url">Enter URL to Scan:</label>
+        <input type="text" id="url" name="url" required>
+        <button type="submit">Scan</button>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+{% extends 'AdminPage/AdminNav.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website List</title>
+    <style>
+        /* Basic styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Centering the table */
+        .table-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* No data message */
+        .no-data {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    {% block content %}
+
+
+
+    <div class="table-container">
+        <h1>Website Monitoring Information</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>URL</th>
+                    <th>Status Code</th>
+                    <th>Response Time (seconds)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ping_list in websites %}
+                <tr>
+                    <td>{{ website.url }}</td>
+                    <td>{{ website.status_code }}</td>
+                    <td>{{ website.response_time }}</td>
+                    <td>
+                    <td><a href="/website_del/{{Website.id}}"><button type="button" class="btn btn-primary mr-2"
+                                onclick="return confirm('Do you want to delete?');">Delete</button></a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3" class="no-data">No website monitoring information available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+{% endblock %}
+
+</html>

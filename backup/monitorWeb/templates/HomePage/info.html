@@ -1,0 +1,304 @@
+{% extends 'nav.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <style>
+        /* Add your custom CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            background-image: url('{% static "/black.jpg" %}');
+        background-repeat: no-repeat;
+        background-size: cover; /* Adjust the background size as needed */
+        }
+
+        h1,
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        ul {
+            color: #666;
+            padding-left: 20px;
+        }
+
+        ul li {
+            list-style-type: disc;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        /* Add more custom styles as needed */
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Cyberattack Descriptions</h1>
+
+        <h2>1. Phishing</h2>
+        <p>Attackers send fraudulent emails that appear to come from a legitimate source, often containing a link or
+            attachment. The email may trick recipients into clicking on the link, which leads to a fake website that
+            captures login credentials or other sensitive information. Alternatively, the attachment may contain malware
+            that infects the victim's device.</p>
+
+        <h2>2. Ransomware</h2>
+        <p>Ransomware is typically delivered through phishing emails or malicious downloads. Once inside a system, it
+            encrypts files and demands a ransom payment in exchange for a decryption key. If the ransom is paid, the
+            attacker may provide the decryption key, but there's no guarantee of recovering the files.</p>
+
+        <h2>3. DDoS (Distributed Denial of Service)</h2>
+        <p>Attackers use a network of compromised devices, known as a botnet, to flood a target website or server with
+            an
+            overwhelming volume of traffic. The excessive traffic consumes the target's resources, causing it to become
+            slow
+            or unavailable to legitimate users.</p>
+
+        <h2>4. SQL Injection</h2>
+        <p>Attackers exploit vulnerabilities in web application input fields to insert malicious SQL queries. These
+            queries
+            may manipulate the database, reveal sensitive data, or gain unauthorized access.</p>
+
+        <h2>5. Cross-Site Scripting (XSS)</h2>
+        <p>Attackers inject malicious scripts into web pages, often in user-generated content or input fields. When
+            other
+            users view the page, their browsers execute the injected scripts, potentially stealing cookies or other
+            sensitive information.</p>
+
+        <h2>6. Cross-Site Request Forgery (CSRF)</h2>
+        <p>Attackers trick users into unknowingly executing malicious actions on a website where they are authenticated.
+            This is done by manipulating the victim's web session through various means, such as embedding malicious
+            links
+            in emails or websites.</p>
+
+        <h2>7. File Upload Vulnerabilities</h2>
+        <p>Attackers exploit vulnerabilities in file upload features on websites to upload malicious files. These files
+            can
+            include scripts or malware, which may execute when accessed by other users.</p>
+
+        <h2>8. Brute Force Attacks</h2>
+        <p>Attackers use automated tools to repeatedly guess usernames and passwords until they gain access to an
+            account or
+            system.</p>
+
+        <h2>9. Credential Stuffing</h2>
+        <p>Attackers use stolen username and password combinations from previous breaches on various online accounts.
+            They
+            rely on individuals reusing passwords across different services, gaining access to accounts with the same
+            credentials.</p>
+
+        <h2>10. Malware</h2>
+        <p>Malware is often delivered through malicious email attachments, infected downloads, or compromised websites.
+            Once
+            on a device, malware can perform various malicious activities, including data theft, system compromise, and
+            surveillance.</p>
+
+        <h2>11. Man-in-the-Middle (MitM) Attacks</h2>
+        <p>Attackers intercept communication between two parties, often by compromising network traffic or devices. This
+            allows them to eavesdrop, manipulate data, or steal information exchanged between the parties.</p>
+
+        <h2>12. Zero-Day Exploits</h2>
+        <p>Attackers discover and exploit vulnerabilities in software or systems before the vendor releases a patch.
+            These
+            attacks often target specific software versions or configurations.</p>
+
+        <h2>13. Website Defacement</h2>
+        <p>Attackers gain unauthorized access to a website's content management system or server. They modify the
+            website's
+            appearance or content to display their own message or deface it for various purposes.</p>
+
+        <h2>14. IoT Vulnerabilities</h2>
+        <p>Attackers exploit vulnerabilities in Internet of Things (IoT) devices, often through weak default passwords
+            or
+            unpatched firmware. Compromised devices can be used for various purposes, including launching attacks on
+            other
+            systems.</p>
+
+        <h2>15. Insider Threats</h2>
+        <p>Insider threats involve individuals within an organization misusing their access and privileges. This may
+            include
+            stealing data, sharing sensitive information, or intentionally causing harm.</p>
+
+        <h2>16. Cryptojacking</h2>
+        <p>Attackers use malicious scripts or malware to hijack a victim's device's processing power to mine
+            cryptocurrencies without their consent or knowledge.</p>
+
+        <h2>17. Advanced Persistent Threats (APTs)</h2>
+        <p>APTs are typically carried out by well-funded, persistent attackers with specific objectives. These attackers
+            use
+            a variety of tactics, such as spear-phishing, zero-day exploits, and long-term reconnaissance, to infiltrate
+            and
+            maintain access to target networks.</p>
+
+        <p>Understanding how these cyberattacks are executed is crucial for organizations and individuals to take
+            proactive
+            measures to prevent or mitigate them. Additionally, staying informed about emerging threats and employing
+            robust
+            cybersecurity practices is essential for safeguarding digital assets and data.</p>
+        <br><br><br>
+        <h1>How to prevent ?</h1>
+        <p>Here's a more detailed description of prevention measures for various types of cyberattacks:</p>
+
+        <p><strong>1. Phishing Prevention:</strong></p>
+        <ul>
+            <li><strong>Employee Training:</strong> Regularly educate employees about phishing techniques and how to
+                recognize suspicious emails.</li>
+            <li><strong>Email Filtering:</strong> Implement robust email filtering solutions to detect and block
+                phishing
+                attempts.</li>
+            <li><strong>Multi-Factor Authentication (MFA):</strong> Enforce MFA to add an extra layer of security for
+                account logins.</li>
+        </ul>
+
+        <p><strong>2. Ransomware Prevention:</strong></p>
+        <ul>
+            <li><strong>Data Backup:</strong> Regularly back up critical data and systems, and store backups offline.
+            </li>
+            <li><strong>Email Security:</strong> Use email filtering to block malicious attachments and links.</li>
+            <li><strong>Patch Management:</strong> Keep software and systems updated with the latest security patches.
+            </li>
+        </ul>
+
+        <p><strong>3. DDoS Prevention:</strong></p>
+        <ul>
+            <li><strong>DDoS Mitigation Services:</strong> Consider using DDoS mitigation services or appliances to
+                filter
+                out malicious traffic.</li>
+            <li><strong>Traffic Monitoring:</strong> Implement traffic monitoring to detect unusual spikes in network
+                traffic.</li>
+            <li><strong>Content Delivery Networks (CDNs):</strong> Use CDNs to distribute traffic and absorb DDoS
+                attacks.
+            </li>
+        </ul>
+
+        <p><strong>4. SQL Injection Prevention:</strong></p>
+        <ul>
+            <li><strong>Input Validation:</strong> Implement input validation and parameterized queries in web
+                applications
+                to prevent SQL injection.</li>
+            <li><strong>Web Application Firewall (WAF):</strong> Use a WAF to filter and block malicious SQL injection
+                attempts.</li>
+        </ul>
+
+        <p><strong>5. Cross-Site Scripting (XSS) Prevention:</strong></p>
+        <ul>
+            <li><strong>Input Validation:</strong> Validate and sanitize user input to prevent XSS attacks.</li>
+            <li><strong>Content Security Policy (CSP):</strong> Implement CSP headers to restrict which scripts can
+                execute
+                in the browser.</li>
+        </ul>
+
+        <p><strong>6. Cross-Site Request Forgery (CSRF) Prevention:</strong></p>
+        <ul>
+            <li><strong>Anti-CSRF Tokens:</strong> Include anti-CSRF tokens in web forms to verify the legitimacy of
+                requests.</li>
+            <li><strong>Same-Site Cookies:</strong> Use the "SameSite" attribute for cookies to prevent cross-site
+                request
+                forgery.</li>
+        </ul>
+
+        <p><strong>7. File Upload Vulnerabilities Prevention:</strong></p>
+        <ul>
+            <li><strong>File Type Validation:</strong> Validate file types and extensions to ensure uploaded files are
+                safe.
+            </li>
+            <li><strong>Store Uploads in Secure Locations:</strong> Store uploaded files in directories with restricted
+                access.</li>
+        </ul>
+
+        <p><strong>8. Brute Force and Credential Stuffing Prevention:</strong></p>
+        <ul>
+            <li><strong>Account Lockouts:</strong> Implement account lockout policies after a certain number of failed
+                login
+                attempts.</li>
+            <li><strong>CAPTCHA:</strong> Use CAPTCHA or reCAPTCHA to deter automated login attempts.</li>
+        </ul>
+
+        <p><strong>9. Malware Prevention:</strong></p>
+        <ul>
+            <li><strong>Endpoint Security:</strong> Deploy strong antivirus and anti-malware solutions on all devices.
+            </li>
+            <li><strong>Employee Training:</strong> Educate employees about the risks of downloading files or clicking
+                on
+                links from untrusted sources.</li>
+        </ul>
+
+        <p><strong>10. Man-in-the-Middle (MitM) Attack Prevention:</strong></p>
+        <ul>
+            <li><strong>Encryption:</strong> Use strong encryption (e.g., HTTPS) for data in transit to prevent
+                interception.</li>
+            <li><strong>Certificate Pinning:</strong> Implement certificate pinning to ensure that connections are made
+                to
+                legitimate servers.</li>
+        </ul>
+
+        <p><strong>11. Zero-Day Exploits Prevention:</strong></p>
+        <ul>
+            <li><strong>Vulnerability Scanning:</strong> Regularly scan for vulnerabilities in your systems and
+                applications.</li>
+            <li><strong>Patch Management:</strong> Apply patches promptly when security updates are released.</li>
+        </ul>
+
+        <p><strong>12. Website Defacement Prevention:</strong></p>
+        <ul>
+            <li><strong>Strong Authentication:</strong> Implement strong authentication for website administrators.</li>
+            <li><strong>Monitoring:</strong> Continuously monitor website content for unauthorized changes.</li>
+        </ul>
+
+        <p><strong>13. IoT Vulnerabilities Prevention:</strong></p>
+        <ul>
+            <li><strong>Change Default Passwords:</strong> Change default passwords on IoT devices to strong, unique
+                ones.
+            </li>
+            <li><strong>Firmware Updates:</strong> Keep IoT device firmware updated with security patches.</li>
+        </ul>
+
+        <p><strong>14. Insider Threat Prevention:</strong></p>
+        <ul>
+            <li><strong>User Activity Monitoring:</strong> Monitor user activity and access to sensitive data.</li>
+            <li><strong>Access Control:</strong> Implement strict access controls and least privilege principles.</li>
+        </ul>
+
+        <p><strong>15. Cryptojacking Prevention:</strong></p>
+        <ul>
+            <li><strong>Network Monitoring:</strong> Monitor network traffic for unusual patterns and connections.</li>
+            <li><strong>Browser Extensions:</strong> Educate users about the risks of malicious browser extensions.</li>
+        </ul>
+
+        <p><strong>16. Advanced Persistent Threats (APTs) Prevention:</strong></p>
+        <ul>
+            <li><strong>Network Segmentation:</strong> Segment the network to limit lateral movement for attackers.</li>
+            <li><strong>Threat Intelligence:</strong> Stay informed about APT groups and their tactics.</li>
+        </ul>
+
+        <p>Implementing these prevention measures, along with a proactive and vigilant cybersecurity posture, can
+            significantly reduce the risk of various cyberattacks on your organization's systems and data. Regularly
+            review
+            and update your cybersecurity measures to adapt to evolving threats.</p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+{% endblock %}

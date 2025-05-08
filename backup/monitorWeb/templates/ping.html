@@ -1,0 +1,126 @@
+{% extends "nav.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ping Results</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    {% load static %}
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            background-image: url('{% static "/blacknew.jpg" %}');
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* Adjust the background size as needed */
+        }
+
+        h1 {
+            color: Brown;
+        }
+
+        h2 {
+            color: #007bff;
+            font-size: 40px;
+        }
+
+        .container {
+            margin-top: 20px;
+
+        }
+
+        form {
+            margin-top: 10px;
+            max-width: 1100px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 6px;
+            margin-bottom: 20px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .ping-result {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .ping-result li {
+            margin-bottom: 10px;
+        }
+
+        li {
+            color: blue;
+            font-size: 17px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="w3-container">
+
+        <h2>Ping a Website:</h2>
+        <div class="w3-card-4" ;>
+            <div class="w3-panel w3-border w3-border-Grey w3-hover-border-green w3-hover-shadow">
+                <form method="post" action="{% url 'ping_website' %}">
+                    {% csrf_token %}
+                    <label for="url">Enter Website URL:</label>
+                    <input type="url" name="url" id="url" required>
+                    <button type="submit">Ping</button>
+                </form>
+
+                <h1>Ping Results</h1>
+                <ul class="ping-result">
+                    {% for result in ping_results %}
+                    <li>
+                        <strong>Website URL:</strong> {{ result.website_url }}<br>
+                        <strong>IP Address:</strong> {{ result.ip_address }}<br>
+                        <strong>Online:</strong> {{ result.is_online }}<br>
+                        <strong>Response Time (ms):</strong> {{ result.response_time }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+{% endblock %}

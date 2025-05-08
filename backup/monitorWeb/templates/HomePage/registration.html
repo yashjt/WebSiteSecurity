@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="{% static 'styles2.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        body{
+        background-image: url('{% static "/blacknew.jpg" %}');
+        background-repeat: no-repeat;
+        background-size: cover; /* Adjust the background size as needed */
+        }
+        .container{
+            width:40% ;
+            padding:20px 20px 20px 20px ;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Registration</h1>
+
+        <form id="registration-form" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="/login/">Login here</a></p>
+    </div>
+
+    <script src="{% static 'script.js' %}">
+
+        // Registration Form Submission
+        document.getElementById('registration-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            // Add your registration logic here
+            alert('Registration form submitted.');
+        });
+
+    </script>
+</body>
+
+</html>

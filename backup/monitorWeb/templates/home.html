@@ -1,0 +1,29 @@
+<!-- monitor/templates/monitor/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Traffic Monitor</title>
+</head>
+
+<body>
+    <h1>Website Traffic Monitor</h1>
+
+    <h2>Websites:</h2>
+    <ul>
+        {% for website in websites %}
+        <li>{{ website.url }} - Visits: {{ website.visits }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add Website:</h2>
+    <form method="post" action="{% url 'add_website' %}">
+        {% csrf_token %}
+        <input type="url" name="url" required>
+        <button type="submit">Add</button>
+    </form>
+</body>
+
+</html>

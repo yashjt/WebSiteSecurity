@@ -1,0 +1,68 @@
+{% extends "HomePage/navbar.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>About Vulnerabilities</h1>
+
+    <!-- Vulnerability Information Cards -->
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Cross-Site Scripting (XSS)</h5>
+                    <p class="card-text">XSS is a type of security vulnerability that allows attackers to inject
+                        malicious scripts into web pages viewed by other users. To prevent XSS, sanitize user input and
+                        use security headers like Content Security Policy (CSP).</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">SQL Injection</h5>
+                    <p class="card-text">SQL Injection is an attack technique where malicious SQL statements are
+                        inserted into an input field, potentially allowing unauthorized access to a database. Prevent it
+                        by using prepared statements or ORM frameworks.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Cross-Site Request Forgery (CSRF)</h5>
+                    <p class="card-text">CSRF is an attack where an attacker tricks a user into performing unwanted
+                        actions on a different website. Use anti-CSRF tokens and ensure proper authentication to prevent
+                        it.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How to Prevent Vulnerabilities Section -->
+    <h2 class="mt-5">How to Prevent Vulnerabilities</h2>
+    <ul>
+        <li>Regularly update and patch your software and libraries.</li>
+        <li>Implement proper input validation and output encoding.</li>
+        <li>Use security frameworks and tools to detect and mitigate vulnerabilities.</li>
+        <li>Educate your development team about secure coding practices.</li>
+        <li>Implement strong authentication and access controls.</li>
+    </ul>
+</div>
+
+<footer class="bg-dark text-light mt-5">
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>About Website Scanning</h4>
+                <p>Hello This is our website Scanner Made by yash Patel Hello how do you do I am doing fine .</p>
+            </div>
+            <div class="col-md-6">
+                <h4>Contact Us</h4>
+                <p>Email: yashjt080@gmail.com</p>
+                <p>Phone: 9723985236</p>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}

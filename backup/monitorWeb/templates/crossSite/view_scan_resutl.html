@@ -1,0 +1,18 @@
+<!-- view_scan_result.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>XSS Scanner - Scan Result</title>
+</head>
+
+<body>
+    <h1>XSS Scanner - Scan Result</h1>
+    <h2>Website: {{ website.url }}</h2>
+    <h3>Scan Result:</h3>
+    <pre>{{ website.scan_result }}</pre>
+    <a href="{% url 'list_scanned_websites' %}">Back to Scanned Websites</a>
+</body>
+
+</html>

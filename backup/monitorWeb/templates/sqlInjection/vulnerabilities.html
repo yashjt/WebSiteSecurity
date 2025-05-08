@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SQL Injection Vulnerabilities</title>
+</head>
+
+<body>
+    <h1>SQL Injection Vulnerabilities</h1>
+    <ul>
+        {% for vulnerability in vulnerabilities %}
+        <li>
+            URL: {{ vulnerability.url }}<br>
+            Method: {{ vulnerability.method }}<br>
+            Detected at: {{ vulnerability.detected_at }}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

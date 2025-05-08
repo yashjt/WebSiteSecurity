@@ -1,0 +1,144 @@
+{% extends "nav.html" %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Website Monitoring</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    {% load static %}
+
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            background-image: url('{% static "/blacknew.jpg" %}');
+            background-repeat: no-repeat;
+            background-size: cover; /* Adjust the background size as needed */
+            
+        }
+
+        h1 {
+            color:  #007bff;
+        }
+
+        /* Form Styles */
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Ping Results Styles */
+        .hidden {
+            display: none;
+        }
+
+        .ping-result {
+            margin: 10px 0;
+        }
+
+     
+    </style>
+    <script>
+        // JavaScript for toggling visibility of ping results
+        function togglePingResults() {
+            const pingResults = document.getElementById('ping-results');
+            pingResults.classList.toggle('hidden');
+        }
+    </script>
+</head>
+
+<body>
+
+
+    <div class="w3-container">
+
+    <h1>Website Monitoring</h1>
+    <div class="w3-card-4" ;>
+        <div class="w3-panel w3-border w3-border-Grey w3-hover-border-green w3-hover-shadow">
+    <!-- Monitoring and Ping Form -->
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="url" placeholder="Enter URL to Monitor or Ping">
+        <button type="submit">Monitor</button>
+    </form>
+
+    <!-- Combined Results Table -->
+    <h2>Monitoring and Ping Results:</h2>
+    <table>
+        <tr>
+            <th>Website URL</th>
+            <th>Status Code</th>
+            <th>Response Time (seconds)</th>
+            <th>Status</th>
+        </tr>
+        {% for website in websites %}
+        <tr>
+            <td>{{ website.url }}</td>
+            <td>{{ website.status_code }}</td>
+            <td>{{ website.response_time }}</td>
+            <td>{% if website.status_code == 200 %}Online{% else %}Offline{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Ping Results (Initially Hidden) -->
+    <div id="ping-results" class="hidden">
+        <h2>Response Result:</h2>
+        <ul>
+            {% for result in ping_results %}
+            <li class="ping-result">
+                {{ result.website_url }} is {% if result.is_online %}online{% else %}offline{% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+</div>
+</div>
+    {% endblock %}
+</body>
+
+</html>

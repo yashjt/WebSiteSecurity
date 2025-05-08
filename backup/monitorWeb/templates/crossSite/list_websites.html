@@ -1,0 +1,27 @@
+{%extends 'nav.html'%}
+
+{% block content %}
+<!-- list_websites.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>XSS Scanner - Scanned Websites</title>
+</head>
+
+<body>
+    <h1>XSS Scanner - Scanned Websites</h1>
+    <ul>
+        {% for website in websites %}
+        <li>
+            <a href="{% url 'view_scan_result' website.id %}">{{ website.url }}</a>
+        </li>
+        {% empty %}
+        <li>No websites have been scanned yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
+{% endblock %}

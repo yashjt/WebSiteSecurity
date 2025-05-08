@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #0ac8d5;
+        }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: rgb(0, 5, 7);
+        }
+
+        .topnav a.active {
+            background-color: #0491aa;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topnav">
+        <a class="active" href="/websiteList/">Scanner</a>
+        <a href="/abitlilink/">bitlilink</a>
+        <a href="/customerList/">Customer</a>
+        <a href="/xssList/">XSS</a>
+        <a href="/csrfList/">Csrf</a>
+        <a href="/sqlList/">SqlInjection</a>
+        <a href="/index/">Logout</a>
+
+    </div>
+
+
+
+</body>
+
+</html>
+
+{% block content %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Scan Results</title>
+</head>
+
+<body>
+    <h1>Scan Results</h1>
+    <p>URL: {{ scanned_url.url | escape }}</p>
+    <p>Scan Result: {{ scanned_url.scan_result | escape }}</p>
+    <p>Vulnerable: {% if scanned_url.is_vulnerable %}Yes{% else %}No{% endif %}</p>
+    <a href="{% url 'xss_scanner' %}">Scan Another URL</a>
+</body>
+
+</html>

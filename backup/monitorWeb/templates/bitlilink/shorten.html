@@ -1,0 +1,114 @@
+{% extends "nav.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    {% load static %}
+    
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            background-image: url('{% static "/blacknew.jpg" %}');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .container {
+            margin-top: 60px;
+        }
+
+        form {
+            margin-top: 10px;
+            max-width: 1100px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 20px;
+        
+        }
+
+        input[type="url"] {
+                width: calc(100% - 20px);
+                padding: 6px;
+                margin-bottom: 20px;
+                border: 1px solid black;
+                border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .shortened-url {
+            margin-top: 20px;
+        }
+
+        .error-message {
+            color: #ff0000;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w3-container">
+    <h1>URL Shortener</h1>
+    <div class="w3-card-4" ;>
+        <div class="w3-panel w3-border w3-border-Grey w3-hover-border-green w3-hover-shadow">
+      <form method="post">
+        {% csrf_token %}
+        <label for="long_url">Enter a Long URL:</label>
+        <input type="url" id="long_url" name="long_url" placeholder="https://example.com" required>
+        <button type="submit">Shorten</button>
+    </form>
+</div>
+</div>
+
+    {% if shortened_url %}
+    <div class="shortened-url">
+        <h2>Shortened URL</h2>
+        <p>Your shortened URL: <a href="{{ shortened_url.long_url }}">{{ shortened_url.short_code }}</a></p>
+        <a href="{% url 'shorten_url' %}" class="back-link">Shorten Another</a>
+    </div>
+    {% endif %}
+
+    {% if error_message %}
+    <div class="error-message">
+        <h2>Error</h2>
+        <p>{{ error_message }}</p>
+        <a href="{% url 'shorten_url' %}" class="back-link">Back to Shorten</a>
+    </div>
+    {% endif %}
+</div>
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'nav.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sql injection </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    {% load static %}
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            background-image: url('{% static "/blacknew.jpg" %}');
+            background-repeat: no-repeat;
+            background-size: cover; /* Adjust the background size as needed */
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        h2{
+            color:Black;
+        }
+        h1 {
+            color: #007bff;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="w3-panel w3-border w3-border-Grey w3-hover-border-green w3-hover-shadow">
+        <div class="card">
+            <h1>SQL Injection Scanner</h1>
+                <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="url">Enter URL to scan:</label>
+                    <input type="url" name="url" required>
+                </div>
+                <button type="submit" class="btn-primary">Scan</button>
+            </form>
+
+            
+            <h2>SQL Injection Scan Result</h2>
+            <p>URL: {{ scan_result.url }}</p>
+            <p>Vulnerable: {% if scan_result.is_vulnerable %}Yes{% else %}No{% endif %}</p>
+            <p>Scan Time: {{ scan_result.scan_time }}</p>
+            <a href="{% url 'sql_injection_scanner' %}">Scan Another URL</a>
+        </div>
+    </div>
+</body>
+
+</html>
+{% endblock %}

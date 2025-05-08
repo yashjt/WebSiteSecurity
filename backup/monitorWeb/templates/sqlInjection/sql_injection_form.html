@@ -1,0 +1,38 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sqlInjection</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    {% load static %}
+   <style>
+   
+   </style>
+</head>
+<body>
+    <h1>Sql Injection</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Scan</button>
+    </form>
+
+   
+    {% if is_vulnerable is not None %}
+    <h1>SQL Injection Scan Result</h1>
+    <p>URL: {{ url }}</p>
+    <p>Vulnerable: {% if is_vulnerable %}Yes{% else %}No{% endif %}</p>
+    <a href="{% url 'sql_injection_scanner' %}">Scan Another URL</a>
+    {% endif %}
+
+</body>
+
+</html>
+
+{% endblock %}

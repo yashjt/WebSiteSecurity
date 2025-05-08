@@ -1,0 +1,150 @@
+{% extends "nav.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Port Scanner</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    {% load static %}
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            background-image: url('{% static "/blacknew.jpg" %}');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .container {
+            margin-top: 60px;
+
+        }
+
+        .card {
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 1);
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        form {
+            margin-top: 10px;
+            max-width: 1100px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 6px;
+            margin-bottom: 20px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .scan-results {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .scan-results h2 {
+            color: #007bff;
+        }
+
+        .scan-results p {
+            margin-bottom: 15px;
+        }
+
+        .scan-results .vulnerable {
+            color: #d9534f;
+            font-weight: bold;
+        }
+
+        .scan-results .not-vulnerable {
+            color: #5bc0de;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w3-container">
+        <h1>Port Scanner</h1>
+
+        <div class="w3-card-4" style="width:100%; height:10%">
+            <div class="w3-panel w3-border w3-border-Grey w3-hover-border-green w3-hover-shadow">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="url">Enter URL or IP Address:</label>
+                        <input type="text" class="form-control" id="url" name="url" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Scan</button>
+                </form>
+
+
+
+                {% if open_ports %}
+                <div class="scan-results">
+                    <div class="mt-4">
+                        <h2>Open Ports:</h2>
+                        <ul>
+                            {% for port in open_ports %}
+                            <li>Port {{ port }} is open</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    {% endif %}
+
+                    {% if error_message %}
+
+                    <div class="scan-result">
+
+                        <h1>Error</h1>
+                        <p>{{ error_message }}</p>
+                        <a href="{% url 'scan_ports' %}" class="btn btn-primary">Back to Scan</a>
+
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
+
+{% endblock %}

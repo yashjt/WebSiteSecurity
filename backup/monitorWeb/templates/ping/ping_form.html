@@ -1,0 +1,38 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Ping Website</h1>
+    <form method="post" action="{% url 'ping_website_new' %}">
+        {% csrf_token %}
+        <label for="url">Enter URL to ping:</label>
+        <input type="url" name="url" required>
+        <button type="submit">Ping</button>
+    </form>
+
+    {% if result %}
+    <h2>Ping Result</h2>
+    <p>URL: {{ result.url }}</p>
+    <p>IP Address: {{ result.ip_address }}</p>
+    <p>Response Time: {{ result.response_time }} seconds</p>
+    <a href="{% url 'ping_form' %}">Ping Another Website</a>
+    {% elif request.method == 'POST' %}
+    <h2>Failed to Ping Website</h2>
+    <p>Invalid URL or unable to reach the website.</p>
+    <a href="{% url 'ping_form' %}">Try Again</a>
+    {% endif %}
+
+</body>
+
+</html>
+{% endblock %}

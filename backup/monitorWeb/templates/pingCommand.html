@@ -1,0 +1,26 @@
+{% extends "nav.html" %}
+<!-- ping/templates/ping/ping.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Ping</title>
+</head>
+
+<body>
+
+
+    <h1>Ping a Website</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="url" name="url" placeholder="Enter URL" required>
+        <button type="submit">Ping</button>
+    </form>
+</body>
+{% endblock %}
+
+</html>
